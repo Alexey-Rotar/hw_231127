@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Console {
+public class Operation {
     Scanner sc = new Scanner(System.in);
     Account account = null;
     int change;
