@@ -9,7 +9,7 @@ public class Operation {
 
     private void create() {
         if (account == null) {
-            System.out.print("Открытие счета.\nВведите начальный баланс: ");
+            System.out.print("Открытие счета...\nВведите начальный баланс: ");
             float initialBalance = Float.parseFloat(sc.nextLine());
             try {
                 account = Account.create(initialBalance);
@@ -29,7 +29,7 @@ public class Operation {
 
     private void deposit() {
         if (account != null) {
-            System.out.print("Пополнение счета.\nВведите сумму: ");
+            System.out.print("Пополнение счета...\nВведите сумму: ");
             float depositAmount = Float.parseFloat(sc.nextLine());
             try {
                 account.deposit(depositAmount);
@@ -49,7 +49,7 @@ public class Operation {
 
     private void withdraw() {
         if (account != null) {
-            System.out.print("Снятие средств со счета.\nВведите сумму: ");
+            System.out.print("Снятие средств со счета...\nВведите сумму: ");
             float withdrawalAmount = Float.parseFloat(sc.nextLine());
             try {
                 account.withdraw(withdrawalAmount);
