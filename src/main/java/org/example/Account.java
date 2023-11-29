@@ -15,24 +15,22 @@ public class Account {
         return new Account(initialBalance);
     }
 
-    public boolean deposit(float depositAmount) throws IllegalArgumentException{
+    public void deposit(float depositAmount) throws IllegalArgumentException{
         if (depositAmount < 0)
             throw new IllegalArgumentException("Невозможно внести депозит с отрицательной суммой!");
         if (depositAmount == 0)
             throw new IllegalArgumentException("Невозможно внести депозит с нулевой суммой!");
         this.balance += depositAmount;
-        return true;
     }
 
-    public boolean withdraw(float withdrawalAmount) throws InsufficientFundsException{
+    public void withdraw(float withdrawalAmount) throws InsufficientFundsException, IllegalArgumentException{
         if (withdrawalAmount < 0)
-            throw new InsufficientFundsException("Невозможно снять отрицательную сумму!");
+            throw new IllegalArgumentException("Невозможно снять отрицательную сумму!");
         if (withdrawalAmount == 0)
-            throw new InsufficientFundsException("Невозможно снять нулевую сумму!");
+            throw new IllegalArgumentException("Невозможно снять нулевую сумму!");
         if (withdrawalAmount > this.balance)
             throw new InsufficientFundsException("Недостаточно средств!\nТекущий баланс: " + this.balance);
         this.balance -= withdrawalAmount;
-        return true;
     }
 
     public float getBalance() {

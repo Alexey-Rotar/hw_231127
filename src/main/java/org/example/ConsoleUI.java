@@ -55,7 +55,7 @@ public class ConsoleUI {
                 account.withdraw(withdrawalAmount);
                 System.out.printf("Сняты средства (-%.2f)\n", withdrawalAmount);
                 viewBalance();
-            } catch (InsufficientFundsException ex) {
+            } catch (InsufficientFundsException | IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             } finally {
                 menu();
@@ -82,6 +82,7 @@ public class ConsoleUI {
         sc.close();
         System.exit(0);
     }
+
     public void menu() {
         System.out.println("\nВыберите действие:");
         System.out.println("0 - Открыть счёт");
@@ -108,6 +109,7 @@ public class ConsoleUI {
                 exit();
                 break;
             default:
+                System.out.println("Неверный пункт меню!");
                 menu();
         }
     }
