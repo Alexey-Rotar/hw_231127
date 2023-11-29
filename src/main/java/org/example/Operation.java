@@ -10,18 +10,19 @@ public class Operation {
     private void create() {
         if (account == null) {
             System.out.print("Открытие счета...\nВведите начальный баланс: ");
-            float initialBalance = Float.parseFloat(sc.nextLine());
             try {
+                float initialBalance = Float.parseFloat(sc.nextLine());
                 account = Account.create(initialBalance);
                 System.out.println("Счёт открыт!");
                 viewBalance();
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Ошибка!");
             } finally {
                 menu();
             }
-        }
-        else {
+        } else {
             System.out.println("Счёт уже открыт!");
             menu();
         }
@@ -30,18 +31,19 @@ public class Operation {
     private void deposit() {
         if (account != null) {
             System.out.print("Пополнение счета...\nВведите сумму: ");
-            float depositAmount = Float.parseFloat(sc.nextLine());
             try {
+                float depositAmount = Float.parseFloat(sc.nextLine());
                 account.deposit(depositAmount);
                 System.out.printf("Счёт пополнен (+%.2f)\n", depositAmount);
                 viewBalance();
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Ошибка!");
             } finally {
                 menu();
             }
-        }
-        else {
+        } else {
             System.out.println("Необходимо открыть счёт!");
             menu();
         }
@@ -50,18 +52,19 @@ public class Operation {
     private void withdraw() {
         if (account != null) {
             System.out.print("Снятие средств со счета...\nВведите сумму: ");
-            float withdrawalAmount = Float.parseFloat(sc.nextLine());
             try {
+                float withdrawalAmount = Float.parseFloat(sc.nextLine());
                 account.withdraw(withdrawalAmount);
                 System.out.printf("Сняты средства (-%.2f)\n", withdrawalAmount);
                 viewBalance();
             } catch (InsufficientFundsException | IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Ошибка!");
             } finally {
                 menu();
             }
-        }
-        else {
+        } else {
             System.out.println("Необходимо открыть счёт!");
             menu();
         }
@@ -70,8 +73,7 @@ public class Operation {
     private void viewBalance() {
         if (account != null) {
             System.out.printf("Текущий баланс: %.2f\n", account.getBalance());
-        }
-        else {
+        } else {
             System.out.println("Необходимо открыть счёт!");
             menu();
         }
