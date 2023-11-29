@@ -2,14 +2,14 @@ package org.example;
 
 import java.util.Scanner;
 
-public class ConsoleUI {
+public class Console {
     Scanner sc = new Scanner(System.in);
     Account account = null;
     int change;
 
     private void create() {
         if (account == null) {
-            System.out.println("Открытие счета.\nВведите начальный баланс:");
+            System.out.print("Открытие счета.\nВведите начальный баланс: ");
             float initialBalance = Float.parseFloat(sc.nextLine());
             try {
                 account = Account.create(initialBalance);
@@ -29,7 +29,7 @@ public class ConsoleUI {
 
     private void deposit() {
         if (account != null) {
-            System.out.println("Пополнение счета.\nВведите сумму:");
+            System.out.print("Пополнение счета.\nВведите сумму: ");
             float depositAmount = Float.parseFloat(sc.nextLine());
             try {
                 account.deposit(depositAmount);
@@ -49,7 +49,7 @@ public class ConsoleUI {
 
     private void withdraw() {
         if (account != null) {
-            System.out.println("Снятие средств со счета.\nВведите сумму:");
+            System.out.print("Снятие средств со счета.\nВведите сумму: ");
             float withdrawalAmount = Float.parseFloat(sc.nextLine());
             try {
                 account.withdraw(withdrawalAmount);

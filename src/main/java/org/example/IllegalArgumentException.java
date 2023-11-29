@@ -1,7 +1,7 @@
 package org.example;
 
-public class IllegalArgumentException extends RuntimeException{
-    public IllegalArgumentException(String message){
+public class IllegalArgumentException extends RuntimeException {
+    public IllegalArgumentException(String message) {
         super(message);
     }
 }
